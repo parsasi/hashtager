@@ -9,8 +9,7 @@ console.log('this ran again')
 
 setInterval(async () => {
     const {active , hashtags} = await getHashtagsAndActive();
-    console.log('from inside interval',  active , hashtags)
     if (active) {
         await sendTweet(hashtags)
     }
-} , 1000 * 20);
+} , 1000 * 60 * 3);

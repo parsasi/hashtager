@@ -5,10 +5,11 @@ import './Popup.css';
 
 const cleanUpHashtag = (newHashtag) => {
   newHashtag = newHashtag.replace(' ', '_');
+  // newHashtag = newHashtag.replace('ـ', '_');
   return newHashtag
 }
 
-const hashtagRegex = new RegExp('^(\w*[0-9a-zA-Z_]+\w*[0-9a-zA-Z_])$' , 'g')
+const hashtagRegex = new RegExp('^(\w*[0-9a-zA-Z_آابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهیئـ]+\w*[0-9a-zA-Z_ـآابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهیئ])$' , 'g')
 const maxNumberOfHashtags = 5;
 
 const Popup = () => {
