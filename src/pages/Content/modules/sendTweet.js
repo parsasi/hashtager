@@ -7,7 +7,7 @@ const refresh = async () => {
     await sleep(500)
     document.querySelector('a[href="/home"]').click();
     await sleep(3000)
-    const loadMoreButton = document.querySelector('section[aria-labelledby="accessible-list-13"] div[role="button"]');
+    const loadMoreButton = document.querySelector('section[aria-labelledby] div[role="button"]');
     if(loadMoreButton) {
         loadMoreButton.click();
         await sleep(1000)
