@@ -1,6 +1,16 @@
-import { printLine } from './modules/print';
+import {setHashtags } from './modules/setHashtags'
+import { sendTweet } from './modules/sendTweet'
+import { keepScreenAwake } from './modules/lock'
+import {getHashtagsAndActive} from './modules/getHashtagsAndActive'
 
-console.log('Content script works!');
-console.log('Must reload extension for modifications to take effect.');
+setHashtags();
+keepScreenAwake();
+console.log('this ran again')
 
-printLine("Using the 'printLine' function from the Print Module");
+setInterval(async () => {
+    const {active , hashtags} = await getHashtagsAndActive();
+    console.log('from inside interval',  active , hashtags)
+    if (active) {
+        await sendTweet(hashtags)
+    }
+} , 1000 * 20);

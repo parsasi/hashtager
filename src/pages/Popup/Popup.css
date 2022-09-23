@@ -1,3 +1,14 @@
+@font-face {
+  font-family: lalezar;
+  src: url(../../assets/fonts/lalezar.ttf);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2&display=swap');
+
+*{
+  font-family: 'Baloo Bhaijaan 2', cursive;
+}
+
 .App {
   position: absolute;
   top: 0px;
@@ -7,7 +18,8 @@
   text-align: center;
   height: 100%;
   padding: 10px;
-  background-color: #282c34;
+  background-color: #5398be;
+  width: '5000px';
 }
 
 .App-logo {
