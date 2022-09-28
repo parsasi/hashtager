@@ -1,4 +1,5 @@
 import React , {useState} from 'react';
+import { useMemo } from 'react';
 import { useEffect } from 'react';
 import logo from '../../assets/img/logo.png';
 import './Popup.css';
@@ -9,6 +10,14 @@ const cleanUpHashtag = (newHashtag) => {
   return newHashtag
 }
 
+const copy = async (text) => {
+  if(window?.navigator?.clipboard){
+    await navigator.clipboard.writeText(text)
+  }else{
+    document.execCommand(text)
+  }
+}
+
 const hashtagRegex = new RegExp('^(\w*[0-9a-zA-Z_آابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهیئـ]+\w*[0-9a-zA-Z_ـآابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهیئ])$' , 'g')
 const maxNumberOfHashtags = 5;
 
@@ -16,6 +25,14 @@ const Popup = () => {
   const [hashtags ,  setHashtags] = useState([]);
   const [newHashtag , setNewHashtag] = useState('');
   const [isOn , setIsOn] = useState(null);
+  
+  const copyHashtags = async () => {
+    const allHashtags = hashtags.reduce((allHashtags , current) => {
+      const currentHashtag = `#${current}\n `;
+      return allHashtags + currentHashtag;
+    } , '')
+    await copy(allHashtags)
+  }
 
   const addHashtag = () => {
     if(newHashtag && hashtagRegex.test(newHashtag) && hashtags.length < maxNumberOfHashtags){
@@ -72,6 +89,11 @@ const Popup = () => {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        <button style={{border : 'none', backgroundColor: '#F2CD5D' , color : '#3a1772', margin : '20px auto' , cursor : 'pointer'}}
+          onClick={copyHashtags}
+        >
+          هشتگ ها را کلیک کپی کنید
+        </button>
         <button style={{border : 'none', backgroundColor: isOn ? '#F2CD5D' : '#3a1772' , color : isOn ? '#3a1772' : '#fff', margin : '20px auto' , cursor : 'pointer'}}
           onClick={() => setIsOn(prevIsOn => !prevIsOn)}
         >

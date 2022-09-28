@@ -1,5 +1,6 @@
 export const defaultHashtags = [
-    'Mahsa_Amini',
+    'mahsamini',
     'OpIran',
-    'مهسا_امینی'
+    'مهسا_امینی',
+    'اعتصابات_سراسری'
 ]

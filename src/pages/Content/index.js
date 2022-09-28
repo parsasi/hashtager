@@ -5,7 +5,7 @@ import {getHashtagsAndActive} from './modules/getHashtagsAndActive'
 
 setHashtags();
 keepScreenAwake();
-console.log('this ran again')
+
 
 setInterval(async () => {
     const {active , hashtags} = await getHashtagsAndActive();
